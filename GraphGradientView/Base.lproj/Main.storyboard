@@ -19,22 +19,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N4S-e6-pXv" customClass="GraphGradientView" customModule="GraphGradientView" customModuleProvider="target">
-                                <rect key="frame" x="18" y="360" width="378" height="176"/>
+                                <rect key="frame" x="32" y="350.5" width="350" height="195"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="N4S-e6-pXv" secondAttribute="height" multiplier="189:88" id="aML-La-oab"/>
+                                    <constraint firstAttribute="width" secondItem="N4S-e6-pXv" secondAttribute="height" multiplier="52:29" id="4gj-Fp-4rU"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="N4S-e6-pXv" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="16E-6f-hMY"/>
-                            <constraint firstItem="N4S-e6-pXv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="18" id="4ak-eq-Oi0"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="N4S-e6-pXv" secondAttribute="trailing" constant="18" id="YbX-LC-Zri"/>
-                            <constraint firstItem="N4S-e6-pXv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bDa-dL-E9J"/>
+                            <constraint firstItem="N4S-e6-pXv" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="0iD-eG-bxD"/>
+                            <constraint firstItem="N4S-e6-pXv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="XM5-ew-RtK"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="N4S-e6-pXv" secondAttribute="trailing" constant="32" id="mCF-90-MJ3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="graphGradientView" destination="N4S-e6-pXv" id="Wuv-pS-zGs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

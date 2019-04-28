@@ -9,9 +9,15 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    
+    @IBOutlet weak var graphGradientView: GraphGradientView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        graphGradientView.values = [10,4,7,1,12]
     }
 
 

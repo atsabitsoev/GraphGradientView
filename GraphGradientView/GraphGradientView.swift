@@ -17,12 +17,19 @@ class GraphGradientView: UIView {
     
     @IBInspectable var topMargin: CGFloat = 19
     @IBInspectable var bottomMargin: CGFloat = 31
+    @IBInspectable var leftMargin: CGFloat = 32
+    @IBInspectable var rightMargin: CGFloat = 34
+    
+    @IBInspectable var dotRadius: CGFloat = 1
+    
+    var values: [CGFloat]?
 
     
     override func draw(_ rect: CGRect) {
         
         addGradient(color1: color1, color2: color2)
         drawLines()
+        drawDots(for: values)
         
     }
     
@@ -50,7 +57,7 @@ class GraphGradientView: UIView {
     
     private func drawLines() {
         
-        let lineLength = bounds.width * 0.8
+        let lineLength = bounds.width - leftMargin - rightMargin
         let lineWidth: CGFloat = 1
         let masCentersOfLines = getCentersOfLines()
         
@@ -85,6 +92,48 @@ class GraphGradientView: UIView {
         linePath.lineWidth = 1
         UIColor(white: 1, alpha: 0.5).setStroke()
         linePath.stroke()
+    }
+    
+    private func drawDots(for values: [CGFloat]?) {
+        
+        guard let values = values, values.count != 0 else { return }
+        
+        let centersOfDots = getCentersOfDots(for: values)
+        for center in centersOfDots {
+            drawDot(at: center)
+        }
+    }
+    
+    private func getCentersOfDots(for values: [CGFloat]) -> [CGPoint] {
+        
+        var centers: [CGPoint] = []
+        
+        let verticalMultiplier = (bounds.height - topMargin - bottomMargin) / values.max()!
+        let horizontalInset = (bounds.width - leftMargin - rightMargin) / CGFloat(values.count - 1)
+        
+        for i in 0..<values.count {
+            
+            let bottomInsetOfCenter = bottomMargin + values[i] * verticalMultiplier
+            
+            let center = CGPoint(x: leftMargin + CGFloat(i) * horizontalInset,
+                                 y: bounds.height - bottomInsetOfCenter)
+            centers.append(center)
+        }
+        print(centers)
+        return centers
+    }
+    
+    private func drawDot(at center: CGPoint) {
+        
+        let dotRect = CGRect(x: center.x - dotRadius,
+                             y: center.y - dotRadius,
+                             width: dotRadius * 2,
+                             height: dotRadius * 2)
+        
+        let dotPath = UIBezierPath(ovalIn: dotRect)
+        UIColor.white.setFill()
+        dotPath.fill()
+        
     }
     
 
