@@ -20,16 +20,19 @@ class GraphGradientView: UIView {
     @IBInspectable var leftMargin: CGFloat = 32
     @IBInspectable var rightMargin: CGFloat = 34
     
-    @IBInspectable var dotRadius: CGFloat = 1
+    @IBInspectable var dotRadius: CGFloat = 2
     
-    var values: [CGFloat]?
+    var values: [CGFloat] = [0,1,2,3]
 
     
     override func draw(_ rect: CGRect) {
         
+         guard values.count > 1 else { return }
+        
         addGradient(color1: color1, color2: color2)
         drawLines()
-        drawDots(for: values)
+        drawDots()
+        drawGraph()
         
     }
     
@@ -94,17 +97,15 @@ class GraphGradientView: UIView {
         linePath.stroke()
     }
     
-    private func drawDots(for values: [CGFloat]?) {
+    private func drawDots() {
         
-        guard let values = values, values.count != 0 else { return }
-        
-        let centersOfDots = getCentersOfDots(for: values)
+        let centersOfDots = getCentersOfDots()
         for center in centersOfDots {
             drawDot(at: center)
         }
     }
     
-    private func getCentersOfDots(for values: [CGFloat]) -> [CGPoint] {
+    private func getCentersOfDots() -> [CGPoint] {
         
         var centers: [CGPoint] = []
         
@@ -134,6 +135,37 @@ class GraphGradientView: UIView {
         UIColor.white.setFill()
         dotPath.fill()
         
+    }
+    
+    private func drawGraph() {
+        
+        let context = UIGraphicsGetCurrentContext()
+        
+        let shadow = UIColor.black
+        let shadowOffset = CGSize(width: 10, height: 11)
+        let shadowBlurRadius: CGFloat = 8
+        
+        let centersOfDots = getCentersOfDots()
+        
+        let graphPath = UIBezierPath()
+        
+        for i in 1..<values.count {
+            graphPath.move(to: centersOfDots[i-1])
+            graphPath.addCurve(to: centersOfDots[i],
+                               controlPoint1: CGPoint(x: abs(centersOfDots[i].x + centersOfDots[i-1].x) / 2,
+                                                      y: centersOfDots[i-1].y),
+                               controlPoint2: CGPoint(x: abs(centersOfDots[i].x + centersOfDots[i-1].x) / 2,
+                                                      y: centersOfDots[i].y))
+        }
+        
+        context?.saveGState()
+        context?.setShadow(offset: shadowOffset, blur: shadowBlurRadius, color: shadow.cgColor)
+        
+        graphPath.lineWidth = 1
+        UIColor.white.setStroke()
+        graphPath.stroke()
+        
+        context?.restoreGState()
     }
     
 
