@@ -12,6 +12,7 @@
 		AC67466122745520006FE618 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC67465F22745520006FE618 /* Main.storyboard */; };
 		AC67466322745521006FE618 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC67466222745521006FE618 /* Assets.xcassets */; };
 		AC67466622745521006FE618 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC67466422745521006FE618 /* LaunchScreen.storyboard */; };
+		AC67466E227469EE006FE618 /* GraphGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC67466D227469EE006FE618 /* GraphGradientView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		AC67466222745521006FE618 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC67466522745521006FE618 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC67466722745521006FE618 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC67466D227469EE006FE618 /* GraphGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphGradientView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				AC67465B22745520006FE618 /* AppDelegate.swift */,
 				AC67465D22745520006FE618 /* ViewController.swift */,
+				AC67466D227469EE006FE618 /* GraphGradientView.swift */,
 				AC67465F22745520006FE618 /* Main.storyboard */,
 				AC67466222745521006FE618 /* Assets.xcassets */,
 				AC67466422745521006FE618 /* LaunchScreen.storyboard */,
@@ -137,6 +140,7 @@
 			files = (
 				AC67465E22745520006FE618 /* ViewController.swift in Sources */,
 				AC67465C22745520006FE618 /* AppDelegate.swift in Sources */,
+				AC67466E227469EE006FE618 /* GraphGradientView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
