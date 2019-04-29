@@ -12,6 +12,8 @@ import UIKit
 class GraphGradientView: UIView {
     
     
+    @IBInspectable var cornerRadius: CGFloat = 12
+    
     @IBInspectable var color1: UIColor = #colorLiteral(red: 0.1405102015, green: 0.4976266623, blue: 0.7326892614, alpha: 1)
     @IBInspectable var color2: UIColor = #colorLiteral(red: 0.01166653726, green: 0.6717716455, blue: 0.7564669251, alpha: 1)
     
@@ -22,18 +24,21 @@ class GraphGradientView: UIView {
     
     @IBInspectable var dotRadius: CGFloat = 2
     
-    var values: [CGFloat] = [0,1,2,3]
-
+    
+    var values: [CGFloat] = [2,7,3,8,3,7,3]
+    
+    let shadowView = UIView()
+    
     
     override func draw(_ rect: CGRect) {
         
-         guard values.count > 1 else { return }
-        
+        guard values.count > 1 else { return }
         addGradient(color1: color1, color2: color2)
         drawLines()
         drawDots()
         drawGraph()
-        
+        setCornerRadius()
+        setupShadow()
     }
     
     
@@ -166,6 +171,22 @@ class GraphGradientView: UIView {
         graphPath.stroke()
         
         context?.restoreGState()
+    }
+    
+    private func setCornerRadius() {
+        layer.cornerRadius = 12
+        clipsToBounds = true
+    }
+    
+    private func setupShadow() {
+        shadowView.frame = frame
+        shadowView.layer.cornerRadius = cornerRadius
+        shadowView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        shadowView.layer.shadowOpacity = 0.5
+        shadowView.layer.shadowColor = UIColor.black.cgColor
+        shadowView.layer.shadowRadius = 2
+        shadowView.backgroundColor = color1
+        superview!.insertSubview(shadowView, at: 0)
     }
     
 
