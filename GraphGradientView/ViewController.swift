@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        graphGradientView.values = [10,65,30,79,40,31,56]
+        graphGradientView.values = [12,13,28,6,6.5,3,12]
     }
 
 
